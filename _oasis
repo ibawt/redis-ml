@@ -1,0 +1,21 @@
+OASISFormat: 0.4
+Name:        redis-ml
+Version:     0.1
+Synopsis:    didndonuffin
+Authors:     ibawt
+License:     BSD-3-clause
+Plugins:     META (0.4), DevFiles (0.4)
+
+Executable "redis-ml"
+  Path:       src
+  BuildTools: ocamlbuild
+  CompiledObject: native
+  install: true
+  MainIs:     main.ml
+  BuildDepends: lwt, lwt.syntax, lwt.log, unix, lwt.unix
+
+SourceRepository master
+  Type: git
+  Location: https://github.com/ibawt/redis-ml
+  Branch: master
+  Browser: https://github.com/ibawt/redis-ml

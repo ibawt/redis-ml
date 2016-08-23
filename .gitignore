@@ -18,3 +18,7 @@ _build/
 # oasis generated files
 setup.data
 setup.log
+/main.byte
+/main.native
+/setup.data
+/setup.log
