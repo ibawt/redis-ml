@@ -1,1 +1,6 @@
 PKG lwt
+PKG lwt.unix
+PKG core
+S src
+B _build/src
+EXT lwt

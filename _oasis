@@ -4,7 +4,12 @@ Version:     0.1
 Synopsis:    didndonuffin
 Authors:     ibawt
 License:     BSD-3-clause
+OCamlVersion:          >= 4.03.0
 Plugins:     META (0.4), DevFiles (0.4)
+BuildTools:            ocamlbuild
+BetaFeatures:          section_object
+AlphaFeatures:         ocamlbuild_more_args
+XOCamlbuildPluginTags: package(ppx_driver.ocamlbuild)
 
 Executable "redis-ml"
   Path:       src
@@ -12,7 +17,7 @@ Executable "redis-ml"
   CompiledObject: native
   install: true
   MainIs:     main.ml
-  BuildDepends: lwt, lwt.syntax, lwt.log, unix, lwt.unix
+  BuildDepends: core, lwt, threads, lwt.unix, lwt.ppx
 
 SourceRepository master
   Type: git
