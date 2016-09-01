@@ -7,19 +7,23 @@ type resp_value =
   | BulkString of bytes
   | Array of resp_value option list
 
+let map_opt f x = function
+  | Some(xx) -> return_some (f xx)
+  | None -> return_none
+
 let read_simple_string ic =
   Lwt_io.read_line_opt ic >>= function
-  | Some x -> return @@ Some (String x)
+  | Some line -> return_some (String line)
   | None -> return_none
 
 let read_error ic =
   Lwt_io.read_line_opt ic >>= function
-  | Some line -> return @@ Some (Error line)
+  | Some line -> return_some (Error line)
   | None -> return_none
 
 let read_integer ic =
   Lwt_io.read_line_opt ic >>= function
-  | Some line -> return_some @@ (Int64.of_string line |> (fun y -> (Integer y)))
+  | Some line -> return_some (Int64.of_string line |> (fun y -> (Integer y)))
   | None -> return_none
 
 let read_bulk_string ic =
